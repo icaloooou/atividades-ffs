@@ -1,19 +1,13 @@
 import os
 from flask import Flask, render_template, redirect, request
 from flask_sqlalchemy import SQLAlchemy
-from models import *
+from config import BaseConfig
 
 app = Flask(__name__)
-
-# MySQL configurations
-#app.config['MYSQL_DATABASE_USER'] = 'root'
-#app.config['MYSQL_DATABASE_PASSWORD'] = 'admin'
-#app.config['MYSQL_DATABASE_DB'] = 'ac'
-#app.config['MYSQL_DATABASE_HOST'] = '172.17.0.2'
-
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:admin@172.17.0.2/ac'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config.from_object(BaseConfig)
 db = SQLAlchemy(app)
+
+from models import *
 
 @app.route('/')
 def inicio():
@@ -41,5 +35,5 @@ def show_aluno(nid):
 
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
+    port = int(os.environ.get("PORT", 5050))
     app.run(host='0.0.0.0', port=port)

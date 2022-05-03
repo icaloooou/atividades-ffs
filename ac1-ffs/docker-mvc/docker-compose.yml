@@ -8,11 +8,12 @@ web:
   volumes:
     - .:/data
   ports:
-    - "5002:5002"
+    - "5050:5050"
 
 db:
-  image: mysql:5.7
+  image: postgres:9.3
   environment:
-      MYSQL_ROOT_PASSWORD: admin
+    - POSTGRES_USER=sis_web
+    - POSTGRES_PASSWORD=123
   ports:
-    - "3306:3306"
+    - "5432:5432"
