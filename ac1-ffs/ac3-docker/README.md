@@ -1,3 +1,7 @@
+## Integrantes
+- Ingrid Cristinne Calou Batista - 1904821
+- Yasmim Barbosa Vieira - 1905043
+---
 ## Docker com Postgres
 #### Para ajustar o IP do banco de dados
 > docker-compose up
